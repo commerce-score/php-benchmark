@@ -14,7 +14,26 @@ cpu type
 cpu frequency
 cpu numer of cores
 ```
-You can disable sending data by editing the following line:
+Sample of anonymized data:
+```
+Start:               2020-03-06 23:46:34
+PHP Version:         7.4.3
+Platform:            Linux
+OS Release:          4.15.0-88-generic
+PHP API:             cli
+CPU:                 Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz
+CPU Frequency:       4390.742 MHz
+CPU Cores:           12
+test_math:           0.187 sec.
+test_strings:        0.140 sec.
+test_loops:          0.151 sec.
+test_ifelse:         0.097 sec.
+test_hashing:        0.092 sec.
+test_crypto:         0.318 sec.
+test_multibyte:      0.162 sec.
+Total time:          1.147 sec.
+```
+The script will not collect any other data. You can disable sending data by editing the following line:
 ```
 define('CALL_COMMERCE_SCORE_API', getenv('CALL_COMMERCE_SCORE_API') ?: false);
 ```
