@@ -1,5 +1,4 @@
 <?php
-
 /*
 ##########################################################################
 #                      PHP Benchmark Performance Script                  #
@@ -44,7 +43,7 @@ function test_Math($count = 140000)
 }
 
 
-function test_Strings($count = 130000)
+function test_Strings($count = 100000)
 {
     $time_start = microtime(true);
     $stringFunctions = array("addslashes", "chunk_split", "metaphone", "strip_tags", "strtoupper", "strtolower", "strrev", "strlen", "soundex", "ord");
@@ -113,7 +112,7 @@ function test_Crypto($count = 100000) {
     return number_format(microtime(true) - $time_start, 3);
 }
 
-function test_MultiByte($count = 800000) {
+function test_MultiByte($count = 60000) {
     $time_start = microtime(true);
     $mbFunctions = array("mb_strlen", "mb_strwidth", "mb_strtoupper", "mb_strtolower", "mb_strrev");
     $string = STRING;
@@ -177,6 +176,7 @@ $phpVersion = PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION.'.'.PHP_RELEASE_VERSION;
 // --------- Get Platform ---------
 $platform = PHP_OS;
 $sapi = php_sapi_name();
+$os_release = php_uname('r');
 // --------- End get Platform ---------
 
 // --------- Get CPU info ---------
@@ -258,6 +258,7 @@ $time = date('Y-m-d H:i:s');
 $output = "Start: ".$time.
     "\nPHP Version: ".$phpVersion.
     "\nPlatform: ".$platform.
+    "\nOS Release: ".$os_release.
     "\nPHP API: ".$sapi.
     "\nCPU: ".$cpu['type'].
     "\nCPU Frequency: ".$cpu['mhz'].' MHz'.
@@ -265,6 +266,7 @@ $output = "Start: ".$time.
 $data['base']['time'] = ['label' => 'Start', 'value' => $time];
 $data['base']['sapi'] = ['label' => 'PHP API', 'value' => $sapi];
 $data['base']['php'] = ['label' => 'PHP version', 'value' => $phpVersion];
+$data['base']['os_release'] = ['label' => 'OS Release', 'value' => $os_release];
 $data['base']['platform'] = ['label' => 'Platform', 'value' => $platform];
 $data['base']['cpu_type'] = ['label' => 'CPU Type', 'value' => $cpu['type']];
 $data['base']['cpu_frequency'] = ['label' => 'Frequency', 'value' => $cpu['mhz']];
@@ -313,4 +315,3 @@ foreach ($lines as $line) {
     echo str_pad($columns[0] . ":", 20);
     echo $columns[1] . "\n";
 }
-
