@@ -140,10 +140,6 @@ function median($runs) {
     }
 }
 
-// --------- Get Server name ---------
-$server = (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : gethostname());
-// --------- End get Server name ---------
-
 // --------- Get PHP version ---------
 // Used in hacks/fixes checks
 $phpversion = explode('.', PHP_VERSION);
@@ -178,6 +174,14 @@ $platform = PHP_OS;
 $sapi = php_sapi_name();
 $os_release = php_uname('r');
 // --------- End get Platform ---------
+
+// --------- Get ini settings ---------
+if (strtolower($sapi) == "cli") {
+    $opcache=intval(ini_get('opcache.enable_cli'));
+} else {
+    $opcache=intval(ini_get('opcache.enable'));
+}
+// --------- End get ini settings ---------
 
 // --------- Get CPU info ---------
 $cpu = [
@@ -260,11 +264,13 @@ $output = "Start: ".$time.
     "\nPlatform: ".$platform.
     "\nOS Release: ".$os_release.
     "\nPHP API: ".$sapi.
+    "\nOPcache: ".$opcache.
     "\nCPU: ".$cpu['type'].
     "\nCPU Frequency: ".$cpu['mhz'].' MHz'.
     "\nCPU Cores: ".$cpu['available'] ."\n";
 $data['base']['time'] = ['label' => 'Start', 'value' => $time];
 $data['base']['sapi'] = ['label' => 'PHP API', 'value' => $sapi];
+$data['base']['opcache'] = ['label' => 'OPcache', 'value' => $opcache];
 $data['base']['php'] = ['label' => 'PHP version', 'value' => $phpVersion];
 $data['base']['os_release'] = ['label' => 'OS Release', 'value' => $os_release];
 $data['base']['platform'] = ['label' => 'Platform', 'value' => $platform];
