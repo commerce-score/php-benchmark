@@ -21,6 +21,7 @@ PHP Version:         7.4.3
 Platform:            Linux
 OS Release:          4.15.0-88-generic
 PHP API:             cli
+OPcache:             0
 CPU:                 Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz
 CPU Frequency:       4390.742 MHz
 CPU Cores:           12
@@ -45,8 +46,8 @@ CALL_COMMERCE_SCORE_API=false
 ## how to run the script
 ```
 # via docker
-docker run --rm scalecommerce/php-bench:7.3.15
+docker run --rm commerce-score/php-benchmark:7.3.18
 
 # via ssh or cli
-curl -Lso- https://raw.githubusercontent.com/ScaleCommerce/php-benchmark/master/benchmark.php | php
+curl -Lso- https://raw.githubusercontent.com/commerce-score/php-benchmark/master/benchmark.php | php
 ```
