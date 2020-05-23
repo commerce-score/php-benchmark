@@ -249,6 +249,12 @@ if (file_exists('/proc/cpuinfo')) {
         }
     }
 }
+else {
+    # TODO: implement cpu detection for mac and win
+    $cpu['available'] = 0;
+    $cpu['type'] = "unknown";
+    $cpu['mhz'] = 0;
+}
 // --------- End get CPU info ---------
 
 $total = 0;
