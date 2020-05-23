@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 ADD benchmark.php /benchmark.php
 
-RUN export ENV PHP=7.0 && \
+RUN export ENV PHP=5.6 && \
     export BUILD_PACKAGES=gnupg && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
