@@ -36,7 +36,13 @@ function test_Math($count = 140000)
     }
     for ($i = 0; $i < $count; $i++) {
         foreach ($mathFunctions as $function) {
-            $r = call_user_func_array($function, array($i));
+            if ($function == 'pi') {
+                $r = call_user_func($function);
+            } elseif ($function == 'bindec') {
+                $r = call_user_func($function, decbin($i));
+            } else {
+                $r = call_user_func_array($function, array($i));
+            }
         }
     }
     return number_format(microtime(true) - $time_start, 3);

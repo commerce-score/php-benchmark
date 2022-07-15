@@ -48,6 +48,9 @@ CALL_COMMERCE_SCORE_API=false
 # via docker
 docker run --rm commercescore/php-benchmark:7.3.18
 
+# test with any PHP version you want
+docker container run --rm -v $(pwd):/app/ php:8.1-cli php /app/benchmark.php
+
 # via ssh or cli
 curl -Lso- https://raw.githubusercontent.com/commerce-score/php-benchmark/master/benchmark.php | php
 ```
