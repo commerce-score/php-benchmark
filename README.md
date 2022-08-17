@@ -45,12 +45,16 @@ CALL_COMMERCE_SCORE_API=false
 
 ## how to run the script
 ```
-# via docker
+# via docker with our prepared images (https://hub.docker.com/r/commercescore/php-benchmark/tags)
 docker run --rm commercescore/php-benchmark:7.3.18
 
-# test with any PHP version you want
+
+# any php version via official php docker images (https://hub.docker.com/_/php/tags?page=1&name=-cli)
+git clone git@github.com:commerce-score/php-benchmark.git
+cd php-benchmark
 docker container run --rm -v $(pwd):/app/ php:8.1-cli php /app/benchmark.php
 
-# via ssh or cli
+
+# via ssh or cli on your server
 curl -Lso- https://raw.githubusercontent.com/commerce-score/php-benchmark/master/benchmark.php | php
 ```
